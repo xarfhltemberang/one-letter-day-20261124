@@ -13,12 +13,15 @@ import os
 
 LETTER = "Z"
 
+if len(LETTER) != 1:
+    raise ValueError("entry must be exactly one character")
+
 
 def main() -> None:
     out_dir = os.environ.get("OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
-    with open(path, "w", encoding="utf-8") as f:
+    with open(path, "w", encoding="utf-8", newline="") as f:
         f.write(LETTER)
 
 
